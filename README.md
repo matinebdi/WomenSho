@@ -8,7 +8,7 @@ A desktop application built with JavaFX for managing a women's fashion store. Tr
 
 - **Product Management** — Add, delete, and browse products across 3 categories: Clothes, Shoes, and Accessories
 - **Buy & Sell** — Purchase stock from suppliers and sell to customers, with automatic financial tracking
-- **Per-Product Discounts** — Apply or remove discounts on individual products (Clothes 30%, Shoes 20%, Accessories 50%)
+- **Custom Discounts** — Apply a custom discount % on individual products, with category-based limits (Clothes max 30%, Shoes max 20%, Accessories max 50%)
 - **Financial Dashboard** — Live profit, income, and cost displayed at the top of the screen
 - **Category Filter** — Filter the product table by Clothes, Shoes, Accessories, or show all
 - **Dark / Light Mode** — Toggle between two themes with one click
@@ -159,11 +159,12 @@ The application window will open and you're ready to go.
 
 1. Select a product in the table
 2. Click **"Apply Discounts"** in the toolbar
-3. The discount is applied based on the product category:
-   - Clothes: **30% off**
-   - Shoes: **20% off**
-   - Accessories: **50% off**
-4. To remove the discount, select the product and click **"Stop Discounts"**
+3. Enter the discount percentage you want to apply
+4. Each category has a maximum discount limit:
+   - Clothes: max **30%**
+   - Shoes: max **20%**
+   - Accessories: max **50%**
+5. To remove the discount, select the product and click **"Stop Discounts"**
 
 ### Deleting a Product
 

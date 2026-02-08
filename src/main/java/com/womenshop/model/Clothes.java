@@ -18,9 +18,14 @@ public class Clothes extends Product {
     }
 
     @Override
-    public void applyDiscount() {
-        setDiscountPrice(getSellPrice() * (1 - CLOTHES_DISCOUNT));
+    public void applyDiscount(double percent) {
+        if (percent <= 0 || percent > CLOTHES_DISCOUNT * 100)
+            throw new IllegalArgumentException("Discount must be between 1% and " + (int)(CLOTHES_DISCOUNT * 100) + "%");
+        setDiscountPrice(getSellPrice() * (1 - percent / 100));
     }
+
+    @Override
+    public double getMaxDiscount() { return CLOTHES_DISCOUNT * 100; }
 
     @Override
     public String toString() {

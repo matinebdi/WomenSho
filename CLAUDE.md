@@ -33,10 +33,10 @@ src/main/java/com/womenshop/
 │   └── FinanceDAO.java                 # Finance tracking
 ├── model/
 │   ├── Product.java                    # Abstract base class (income, cost are static)
-│   ├── Clothes.java                    # 30% discount, has size
-│   ├── Shoes.java                      # 20% discount, has shoeSize
-│   ├── Accessory.java                  # 50% discount
-│   └── Discount.java                   # Interface: applyDiscount(), unApplyDiscount()
+│   ├── Clothes.java                    # max 30% discount, has size
+│   ├── Shoes.java                      # max 20% discount, has shoeSize
+│   ├── Accessory.java                  # max 50% discount
+│   └── Discount.java                   # Interface: applyDiscount(percent), unApplyDiscount(), getMaxDiscount()
 └── util/
     └── AlertHelper.java                # Alert dialog helper
 
@@ -53,7 +53,7 @@ src/main/resources/
 - `Product.income` and `Product.cost` are static fields tracking global store finances
 - Profit = income - cost (no initial capital)
 - Products can only be deleted when stock = 0
-- Discounts are applied per selected product, not globally
+- Discounts are applied per selected product with a user-chosen %, capped by category max (Clothes 30%, Shoes 20%, Accessories 50%)
 - Dark/light theme toggle via CSS swap on the Scene
 
 ## Color Palette

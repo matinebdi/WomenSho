@@ -157,9 +157,27 @@ public class MainController {
             AlertHelper.showMessage("Info", "Please select a product first.", Alert.AlertType.WARNING);
             return;
         }
-        selected.applyDiscount();
-        try { productDAO.updateProduct(selected); } catch (SQLException e) {}
-        productTable.refresh();
+
+        int max = (int) selected.getMaxDiscount();
+        TextInputDialog dialog = new TextInputDialog(String.valueOf(max));
+        dialog.setTitle("Apply Discount");
+        dialog.setHeaderText("Discount for " + selected.getName() + " (max " + max + "%)");
+        dialog.setContentText("Discount %:");
+
+        dialog.showAndWait().ifPresent(input -> {
+            try {
+                double percent = Double.parseDouble(input);
+                selected.applyDiscount(percent);
+                productDAO.updateProduct(selected);
+                productTable.refresh();
+            } catch (NumberFormatException e) {
+                AlertHelper.showMessage("Error", "Please enter a valid number.", Alert.AlertType.WARNING);
+            } catch (IllegalArgumentException e) {
+                AlertHelper.showMessage("Error", e.getMessage(), Alert.AlertType.WARNING);
+            } catch (SQLException e) {
+                AlertHelper.showMessage("DB Error", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        });
     }
 
     @FXML
