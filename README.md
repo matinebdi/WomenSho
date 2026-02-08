@@ -18,9 +18,25 @@ A desktop application built with JavaFX for managing a women's fashion store. Tr
 
 ## Screenshots
 
-| Light Mode | Dark Mode |
+### Light Mode
+
+![Main View - Light](ScreenShots/light-main.png)
+
+![Add Product - Light](ScreenShots/light-add-product.png)
+
+| Purchase Dialog | Sell Dialog |
 |---|---|
-| *(add screenshot)* | *(add screenshot)* |
+| ![Purchase](ScreenShots/light-purchase.png) | ![Sell](ScreenShots/light-sell.png) |
+
+### Dark Mode
+
+![Main View - Dark](ScreenShots/dark-main.png)
+
+![Add Product - Dark](ScreenShots/dark-add-product.png)
+
+| Purchase Dialog | Sell Dialog |
+|---|---|
+| ![Purchase](ScreenShots/dark-purchase.png) | ![Sell](ScreenShots/dark-sell.png) |
 
 ---
 
