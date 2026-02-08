@@ -130,12 +130,23 @@ public class ProductDAO {
         if (stock > 0) {
             throw new IllegalArgumentException("Product cannot be deleted: stock still available");
         }
-        
-        String sql = "DELETE FROM products WHERE id = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
-            pstmt.executeUpdate();
+
+        try (Connection conn = DBConnection.getConnection()) {
+            conn.setAutoCommit(false);
+            // Delete from sub-tables first in case CASCADE is not set
+            try (PreparedStatement ps = conn.prepareStatement("DELETE FROM clothes WHERE product_id = ?")) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+            }
+            try (PreparedStatement ps = conn.prepareStatement("DELETE FROM shoes WHERE product_id = ?")) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+            }
+            try (PreparedStatement ps = conn.prepareStatement("DELETE FROM products WHERE id = ?")) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+            }
+            conn.commit();
         }
     }
 }
