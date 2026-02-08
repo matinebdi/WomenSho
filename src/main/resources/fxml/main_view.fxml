@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.womenshop.controller.MainController"
+            prefWidth="950" prefHeight="600">
+    <top>
+        <HBox styleClass="stats-bar" alignment="CENTER_LEFT">
+            <Label fx:id="lblCapital" text="Profit: 0.00 EUR" styleClass="stat-capital"/>
+            <Label fx:id="lblIncome" text="Income: 0 EUR" styleClass="stat-income"/>
+            <Label fx:id="lblCost" text="Cost: 0 EUR" styleClass="stat-cost"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnTheme" text="Dark Mode" onAction="#handleToggleTheme" styleClass="btn-theme"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="14">
+            <padding><Insets top="16" right="20" bottom="10" left="20"/></padding>
+            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="toolbar">
+                <Button text="+ Add Product" onAction="#handleAddProduct" styleClass="btn-add"/>
+                <Button text="Apply Discounts" onAction="#handleApplyDiscount" styleClass="btn-discount"/>
+                <Button text="Stop Discounts" onAction="#handleStopDiscount" styleClass="btn-stop-discount"/>
+                <Separator orientation="VERTICAL"/>
+                <ComboBox fx:id="filterCombo" promptText="Filter by Category" prefWidth="180"/>
+            </HBox>
+            <TableView fx:id="productTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colID" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="colName" text="Product Name" prefWidth="200"/>
+                    <TableColumn fx:id="colStock" text="Stock" prefWidth="100"/>
+                    <TableColumn fx:id="colPrice" text="Price (EUR)" prefWidth="120"/>
+                    <TableColumn fx:id="colDiscount" text="Discount Price" prefWidth="110"/>
+                    <TableColumn fx:id="colSold" text="Sold" prefWidth="70"/>
+                    <TableColumn fx:id="colBought" text="Bought" prefWidth="70"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox styleClass="action-bar" alignment="CENTER_RIGHT">
+            <Button text="Purchase" onAction="#handlePurchase" styleClass="btn-purchase"/>
+            <Button text="Sell" onAction="#handleSell" styleClass="btn-sell"/>
+            <Button text="Delete" onAction="#handleDelete" styleClass="btn-delete"/>
+        </HBox>
+    </bottom>
+</BorderPane>

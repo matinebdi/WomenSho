@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="6" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.womenshop.controller.ProductDialogController"
+      prefWidth="360">
+    <padding><Insets top="28" right="28" bottom="28" left="28"/></padding>
+
+    <Label text="New Product" styleClass="dialog-title"/>
+
+    <Label text="Product Type:" styleClass="form-label"/>
+    <ComboBox fx:id="typeCombo" prefWidth="300" maxWidth="Infinity"/>
+
+    <Label text="Name:" styleClass="form-label"/>
+    <TextField fx:id="txtName" promptText="Enter product name"/>
+
+    <Label text="Purchase Price:" styleClass="form-label"/>
+    <TextField fx:id="txtPurchasePrice" promptText="e.g. 25.00"/>
+
+    <Label text="Sale Price:" styleClass="form-label"/>
+    <TextField fx:id="txtSalePrice" promptText="e.g. 45.00"/>
+
+    <Label fx:id="lblSize" text="Size:" styleClass="form-label"/>
+    <TextField fx:id="txtSize" promptText="e.g. 38, 40, 42..."/>
+
+    <Label text="Initial Stock:" styleClass="form-label"/>
+    <TextField fx:id="txtStock" promptText="e.g. 10"/>
+
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <padding><Insets top="16"/></padding>
+        <Button text="Cancel" onAction="#handleCancel" styleClass="btn-cancel"/>
+        <Button text="Save" onAction="#handleSave" styleClass="btn-save"/>
+    </HBox>
+</VBox>
